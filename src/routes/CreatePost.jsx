@@ -3,8 +3,7 @@ import {Form,} from 'react-router-dom'
 
 export default function CreatePost() {
   return (
-    <div className="createPostRoute">
-        <h2>Create Post</h2>
+    <div className="createPostRoute">   
         <Form>
             <input type="text" name="post-title" id="post-title" placeholder='Post Title..' />
             <textarea name="post-description" id="post-description" placeholder='Describe your post...'></textarea>

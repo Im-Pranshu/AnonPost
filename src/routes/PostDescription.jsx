@@ -3,7 +3,7 @@ import React from 'react'
 export default function PostDescription() {
   return (
     <div className="dashboardIndex">
-        <h2>All Posts (10)</h2>
+        {/* <h2>All Posts (10)</h2> */}
         <div className="postData">
             <h3>This is Post Title</h3>
             <p>This is the post description for this topic,Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</p>

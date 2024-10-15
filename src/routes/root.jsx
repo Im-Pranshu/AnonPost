@@ -9,7 +9,7 @@ import {
 export async function loader({ request, params }) {
 
   
-  console.log(request.url);
+  // console.log(request.url);
   
   // trim url to get the name of the path.
   function trimSubstring(str, substring) {
@@ -17,7 +17,7 @@ export async function loader({ request, params }) {
   }
   const originalString = request.url;
   const trimmedString = trimSubstring(originalString, "http://localhost:5173/");
-  console.log("trimmedString",trimmedString); 
+  // console.log("trimmedString",trimmedString); 
 
   if(trimmedString == "account-created" || trimmedString == "dashboard" || trimmedString == "dashboard/create-post"){
     return {

@@ -5,6 +5,7 @@ import './index.css'
 import {
   createBrowserRouter,
   RouterProvider,
+  Outlet
 } from 'react-router-dom'
 
 import Root from "./routes/root";
@@ -13,12 +14,15 @@ import Index from "./routes/index";
 import SignIn from './routes/signIn';
 import SignUp from './routes/signUp'
 import SignUpOtp from './routes/signUpOtp'
-import {loader as rootLoader} from "./routes/root"
+import index, {loader as rootLoader} from "./routes/root"
 import AccountCreated from './routes/accountCreated';
 import DashboardRoot from './routes/Dashboard';
-import DashboardIndex from './routes/DashboardIndex';
+// {loader as dashboardLoader}
+ 
+// import DashboardIndex from './routes/DashboardIndex';
 import CreatePost from './routes/CreatePost';
 import PostDescription from './routes/PostDescription';
+import { Post } from './routes/Post';
 
 const router = createBrowserRouter([
   {
@@ -51,29 +55,20 @@ const router = createBrowserRouter([
       {
         path: "/dashboard",
         element: <DashboardRoot/>,
+        // loader: dashboardLoader,
+        // id: 'dashboardroot',
 
         children: [
           {
             index: true,
-            element: <DashboardIndex />,
-            
-            // children: [
-            //   // {
-            //   //   index:true,
-            //   //   element: <PostDescription/>,
-            //   // },
-            //   {
-            //     path: '/dashboard/post1',
-            //     element: <PostDescription/>,
-            //   },
-            // ],
-          },
+            element: <Post/>,
+          },    
           {
-            path: '/dashboard/:postId',
+            path: ':postId',
             element: <PostDescription/>,
-          },
+          },    
           {
-            path: "/dashboard/create-post",
+            path: "create-post",
             element: <CreatePost/>,
           },
         ],

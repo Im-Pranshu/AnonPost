@@ -2,6 +2,8 @@ import React from 'react'
 import {Link} from 'react-router-dom'
 
 export const Post = () => {
+    // const user = useRouteLoaderData("dashboardroot");
+
   return (
         <div className='dashboardIndex'>
             <Link to={"/dashboard/post1"} className="post">
