@@ -19,7 +19,7 @@ export async function loader({ request, params }) {
   const trimmedString = trimSubstring(originalString, "http://localhost:5173/");
   console.log("trimmedString",trimmedString); 
 
-  if(trimmedString == "account-created" || trimmedString == "dashboard"){
+  if(trimmedString == "account-created" || trimmedString == "dashboard" || trimmedString == "dashboard/create-post"){
     return {
       name: "Welcome, Name"
     }

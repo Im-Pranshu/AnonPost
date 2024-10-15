@@ -8,6 +8,7 @@ import {
 } from 'react-router-dom'
 
 import Root from "./routes/root";
+import ErrorPage from './routes/error_page';
 import Index from "./routes/index";
 import SignIn from './routes/signIn';
 import SignUp from './routes/signUp'
@@ -23,6 +24,7 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <Root/>,
+    errorElement: <ErrorPage/>,
     loader: rootLoader,
 
     children: [
@@ -56,14 +58,19 @@ const router = createBrowserRouter([
             element: <DashboardIndex />,
             
             // children: [
+            //   // {
+            //   //   index:true,
+            //   //   element: <PostDescription/>,
+            //   // },
             //   {
-            //     index:true,
-            //     element: <AllPost/>,
+            //     path: '/dashboard/post1',
+            //     element: <PostDescription/>,
             //   },
-            //   {
-            //     path: ':id'
-            //   }
             // ],
+          },
+          {
+            path: '/dashboard/:postId',
+            element: <PostDescription/>,
           },
           {
             path: "/dashboard/create-post",
