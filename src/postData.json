@@ -1,0 +1,129 @@
+{
+  "posts": [
+    {
+      "id": "post1",
+      "title": "This is Post Title",
+      "description": "This is the post description for this topic, Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+      "commentReply": {
+        "commentsCount": 12,
+        "repliesCount": 10
+      },
+      "comments": [
+        {
+          "commenter": "Jimmy",
+          "comment": "This is the First Comment for this post",
+          "replies": []
+        },
+        {
+          "commenter": "Dhruv",
+          "comment": "This is the Second Comment for this post",
+          "replies": [
+            {
+              "replier": "Ravi",
+              "reply": "This is the reply for this comment"
+            },
+            { "replier": "Ravi", "reply": "Another Reply for this comment" },
+            { "replier": "Shrey", "reply": "One More Reply for this comment" },
+            { "replier": "Jenny", "reply": "Another Reply for this comment" },
+            { "replier": "Mishra", "reply": "One More Reply for this comment" },
+            { "replier": "Devang", "reply": "Another Reply for this comment" },
+            { "replier": "Ravi", "reply": "One More Reply for this comment" },
+            { "replier": "Sunita", "reply": "Another Reply for this comment" },
+            { "replier": "Jadav", "reply": "One More Reply for this comment" },
+            { "replier": "Rubi", "reply": "Another Reply for this comment" },
+            { "replier": "Ravi", "reply": "One More Reply for this comment" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "post2",
+      "title": "This is Post 2 Title",
+      "description": "This is the description for the second post.",
+      "commentReply": {
+        "commentsCount": 1,
+        "repliesCount": 5
+      },
+      "comments": [
+        {
+          "commenter": "Alice",
+          "comment": "This is a comment for the second post",
+          "replies": [
+            {
+              "replier": "Bob",
+              "reply": "This is a reply for Alice's comment"
+            },
+            {
+              "replier": "John",
+              "reply": "This is a reply for Alice's comment"
+            },
+            {
+              "replier": "Keath",
+              "reply": "This is a reply for Alice's comment"
+            },
+            {
+              "replier": "Jin",
+              "reply": "This is a reply for Alice's comment"
+            },
+            { "replier": "Roy", "reply": "This is a reply for Alice's comment" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "post3",
+      "title": "This is Post 3 Title",
+      "description": "This is the description for the third post.",
+      "commentReply": {
+        "commentsCount": 2,
+        "repliesCount": 30
+      },
+      "comments": [
+        {
+          "commenter": "Carol",
+          "comment": "This is a comment for the third post",
+          "replies": []
+        },
+        {
+          "commenter": "Dan",
+          "comment": "Another comment for the third post",
+          "replies": [
+            { "replier": "Eve", "reply": "Reply to Dan's comment" },
+            { "replier": "Stacy", "reply": "Reply to Dan's comment" },
+            { "replier": "Eve", "reply": "Reply to Dan's comment" },
+            { "replier": "Stacy", "reply": "Reply to Dan's comment" },
+            { "replier": "Eve", "reply": "Reply to Dan's comment" },
+            { "replier": "Stacy", "reply": "Reply to Dan's comment" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "post4",
+      "title": "This is Post 4 Title",
+      "description": "This is the description for the fourth post.",
+      "commentReply": {
+        "commentsCount": 1,
+        "repliesCount": 10
+      },
+      "comments": [
+        {
+          "commenter": "Frank",
+          "comment": "This is a comment for the fourth post",
+          "replies": [
+            { "replier": "Grace", "reply": "Reply to Frank's comment" },
+            { "replier": "Lucy", "reply": "Reply to Frank's comment" },
+            { "replier": "Joy", "reply": "Reply to Frank's comment" },
+            { "replier": "Rancho", "reply": "Reply to Frank's comment" },
+            { "replier": "Gins", "reply": "Reply to Frank's comment" },
+            { "replier": "Fins", "reply": "Reply to Frank's comment" },
+            { "replier": "Jenny", "reply": "Reply to Frank's comment" },
+            { "replier": "Grace", "reply": "Reply to Frank's comment" },
+            { "replier": "Tokyo", "reply": "Reply to Frank's comment" },
+            { "replier": "Berlin", "reply": "Reply to Frank's comment" }
+          ]
+        }
+      ]
+    }
+  ]
+}

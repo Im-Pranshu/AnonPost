@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,100..900;1,100..900&display=swap");
 
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
@@ -16,7 +16,7 @@
   box-sizing: border-box;
 }
 
-*{
+* {
   box-sizing: border-box;
 }
 
@@ -27,36 +27,31 @@
   }
 }
 
-body {
-  margin: 0;
-  padding: 0;
-}
-
-.rootRoute{
+.rootRoute {
   width: 100%;
   height: 100vh;
 }
 
-.navBar{
+.navBar {
   display: flex;
   height: 5rem;
   justify-content: space-between;
 }
 
-.navLogo{
+.navLogo {
   display: flex;
   gap: 25px;
 }
 
-.navBar img{
+.navBar img {
   width: 42.22px;
   height: 40px;
   margin-top: 19px;
   margin-left: 45px;
 }
 
-.appName{
-  font-family: "url",sans-serif;
+.appName {
+  font-family: "url", sans-serif;
   margin-top: 27px;
   font-size: 20px;
   font-weight: 600;
@@ -65,11 +60,11 @@ body {
   color: white;
 }
 
-.navBar p{
+.navBar p {
   margin-right: 100px;
 }
 
-.outlet{
+.outlet {
   display: flex;
   height: 36rem;
   padding: 25px;
@@ -79,37 +74,33 @@ body {
 
 /* INdex ROute which is default route */
 
-.index{
+.index {
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  font-family: "url",sans-serif;
-  color: #FFFFFF;
+  font-family: "url", sans-serif;
+  color: #ffffff;
 }
 
-/* #error-page{
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-#error-page div{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-} */
-
-#error-page {
+/* #error-page {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   width: 100%;
+} */
+
+#error-page div {
+  /* border: 1px solid white; */
+  display: flex;
+  height: 90vh;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
-.rocketDiv{
+.rocketDiv {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -120,16 +111,16 @@ body {
   border: 1px solid #292929;
 }
 
-.index h1{
+.index h1 {
   text-align: center;
   width: 756px;
-  font-family: "url",sans-serif;
+  font-family: "url", sans-serif;
   font-size: 50px;
   font-weight: 700;
   margin-bottom: 0px;
 }
 
-.signUpBtn{
+.signUpBtn {
   margin-top: 40px;
   display: flex;
   align-items: center;
@@ -143,52 +134,52 @@ body {
   color: white;
 }
 
-.loginBtn{
+.loginBtn {
   color: white;
 }
 
 /* signUp Route */
-.signUp{
+.signUp {
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  background: #FFFFFF1A;
-  font-family: "url",sans-serif;
+  background: #ffffff1a;
+  font-family: "url", sans-serif;
   width: 387px;
   height: 429px;
   gap: 0px;
   border-radius: 10px;
 }
 
-.signUp img{
+.signUp img {
   width: 25px;
   height: 25px;
 }
 
-.signUp h2{
+.signUp h2 {
   height: 28px;
   font-size: 24px;
   line-height: 28.2px;
   margin-bottom: 50px;
 }
 
-.signUp Form{
+.signUp Form {
   display: flex;
   flex-direction: column;
   gap: 20px;
 }
 
-.signUp Form > input{
+.signUp Form > input {
   width: 250px;
   height: 48px;
   border-radius: 1000px;
-  border: 1px solid #FFFFFF;
+  border: 1px solid #ffffff;
   padding-left: 35px;
   margin-bottom: -8px;
 }
 
-.signUpContinue{
+.signUpContinue {
   margin-top: 40px;
   display: flex;
   align-items: center;
@@ -204,83 +195,82 @@ body {
   color: white;
 }
 
-.signUpContinue>img{
-  height: 12px; 
+.signUpContinue > img {
+  height: 12px;
   width: 15px;
 }
 
 /* sign up otp screen */
-.otp p{
+.otp p {
   width: 254px;
   font-family: "url", sans-serif;
   font-size: 14px;
   line-height: 16.45px;
   text-align: center;
-  color: #FFFFFF80;
+  color: #ffffff80;
 }
 
-.actCreated{
+.actCreated {
   gap: 10px;
 }
 
-.actCreated > img{
+.actCreated > img {
   width: 31.7px;
   height: 33.33px;
 }
 
-.actCreated h2{
+.actCreated h2 {
   width: 197px;
-  font-family: "url",sans-serif;
+  font-family: "url", sans-serif;
   line-height: 28.2px;
   text-align: center;
 }
 
 /* Dashboard */
 
-.dashboard{
-
-  font-family: "url",sans-serif;
+.dashboard {
+  font-family: "url", sans-serif;
   display: flex;
-  margin-top: 50px;
-  height: 36rem;
+  margin-top: 150px;
+  height: 45rem;
   width: 100vw;
   justify-content: center;
   gap: 100px;
-  color: #FFFFFF80;
+  color: #ffffff80;
 }
 
-.tabs{
+.tabs {
   display: flex;
   flex-direction: column;
   gap: 20px;
   margin-top: 40px;
 }
 
-.tabs > *{
+.tabs > * {
   display: flex;
   align-items: center;
   width: 290px;
   height: 57px;
   text-decoration: none;
-  color: #FFFFFF80;
+  color: #ffffff80;
   font-size: 20px;
   border-radius: 10px;
   padding-left: 24px;
 }
 
-.tabLink{
-  background: #FFFFFF0D;  
+.tabLink {
+  background: #ffffff0d;
 }
 
-.active{
-  background: #FFFFFF4D;
+.active {
+  background: #ffffff4d;
   color: white;
 }
 
-.createPost{
+.createPost {
   display: flex;
   justify-content: start;
-  border: 1px solid #FFFFFF80;
+  border: 1px solid #ffffff80;
   align-items: center;
   text-align: left;
   width: 18.125rem;
@@ -288,126 +278,198 @@ body {
   font-weight: 700;
 }
 
-.details{
+.details {
   display: flex;
-  background: #0D0D0D;
+  background: #0d0d0d;
   padding: 14px 14px 14px 19px;
   margin: 0px;
 }
 
 /* Dashboard Index */
 
-.dashboardIndex{
-  font-family: "url",sans-serif;
+.dashboardIndex {
+  font-family: "url", sans-serif;
   margin-top: 0px;
   display: flex;
-  flex-direction: column; 
+  height: 42rem;
+  flex-direction: column;
   gap: 15px;
 }
 
-.dashboardIndex > *{
+.dashboardIndex * {
   text-decoration: none;
-  color: #FFFFFF80;
+  color: #ffffff80;
 }
 
-.dashboardIndex > h2{
+.dashboardIndex > h2 {
   color: white;
   margin: 0px;
 }
 
-.postDetailsOutlet{
+.postDetailsOutlet {
+  border-radius: 10px;
   height: 100%;
+  width: 554px;
 }
 
-.post{
+.post {
   display: flex;
   flex-direction: column;
   width: 523px;
-  background: #FFFFFF0D;
+  background: #ffffff0d;
   border-radius: 10px;
   padding-left: 30px;
   line-height: 23.5px;
 }
 
-.post > p{
+.post > p {
   font-size: 20px;
   font-weight: 700;
 }
 
-.postDetails{
+.postDetails {
   display: flex;
   gap: 12px;
   line-height: 18.8px;
 }
 
+/* Loader styles */
+.loader {
+  display: flex; /* Use flexbox for centering */
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  height: 100%; /* Full viewport height */
+  gap: 15px;
+  font-size: 26px; /* Font size for loading text */
+  color: #d2d2d2; /* Color of the loading text */
+}
+
+.loader:before {
+  content: ""; /* Empty content for the loader */
+  display: inline-block; /* Required for animation */
+  width: 40px; /* Width of the spinner */
+  height: 40px; /* Height of the spinner */
+  border: 5px solid #ccc; /* Light gray border */
+  border-top-color: #242424; /* Color for the spinner's top */
+  border-radius: 50%; /* Make it circular */
+  animation: spin 1s linear infinite; /* Spin animation */
+}
+
+/* Spin animation */
+@keyframes spin {
+  0% {
+    transform: rotate(0deg); /* Start position */
+  }
+  100% {
+    transform: rotate(360deg); /* End position */
+  }
+}
 
 /* Create Post Route */
-.createPostRoute h2{
-  font-family: "url",sans-serif;
+.createPostRoute h2 {
+  font-family: "url", sans-serif;
   padding: 0px;
   margin: 0px;
   font-size: 20px;
   line-height: 23.5px;
   color: white;
 }
-.createPostRoute{
+.createPostRoute {
   margin: 0px;
 }
 
-.createPostRoute Form{
+.createPostRoute Form {
   display: flex;
   flex-direction: column;
   gap: 23px;
-  padding: 30px;
+  padding: 18.5px;
   align-items: center;
 }
 
-.createPostRoute Form input,.createPostRoute Form textarea{
+.createPostRoute Form input,
+.createPostRoute Form textarea {
   border: none;
   padding: 17px 17px 17px 24px;
   font-size: 20px;
-  background: #FFFFFF0D;
+  background: #ffffff0d;
   border-radius: 10px;
 }
 
-#post-title{
+#post-title {
   width: 486px;
   height: 58px;
 }
 
-#post-description{
+#post-description {
   width: 486px;
   height: 160px;
   resize: none;
 }
 
-.submitPost{
+.submitPost {
   width: 290px;
   height: 57px;
-  background: #FFFFFF1A;
-  color: #FFFFFF80;
+  background: #ffffff1a;
+  color: #ffffff80;
   font-size: 20px;
   border: none;
   border-radius: 10px;
 }
 
-
 /* Post Description Route */
-.postData{
-  font-family: "url",sans-serif;
+.postData * {
+  padding: 0px;
+  margin: 0px;
+}
+
+.postData {
+  font-family: "url", sans-serif;
   width: 523px;
-  background: #FFFFFF0D;
+  height: 38rem;
+  background: #ffffff0d;
   padding: 25px 25px 10px 28px;
+  border-radius: 15px;
   gap: 0px;
 }
 
-.commentReply{
+.postData h3 {
+  font-size: 20px;
+}
+
+.postData p {
+  font-size: 16px;
+}
+
+.postData > p {
+  margin-bottom: 17px;
+}
+
+.commentReply {
   display: flex;
   gap: 10px;
   font-style: italic;
 }
 
-.replyToCmt{
-  margin-left: 88px;
+.comments h3 {
+  font-size: 16px;
+  margin-top: 11px;
+  margin-bottom: 16px;
 }
 
+.comments > p {
+  color: blue;
+  margin-bottom: 16px;
+}
+
+.reply {
+  margin-bottom: 16px;
+}
+
+.replyOfReply {
+  margin-left: 88px;
+  margin-bottom: 6px;
+}
+
+.replyToCmt {
+  margin-left: 88px;
+}

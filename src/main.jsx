@@ -1,34 +1,27 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import './index.css'
+import { StrictMode } from "react";
+import { createRoot } from "react-dom/client";
+import "./index.css";
 // Router
-import {
-  createBrowserRouter,
-  RouterProvider,
-  Outlet
-} from 'react-router-dom'
+import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 
-import Root from "./routes/root";
-import ErrorPage from './routes/error_page';
+import Root, { loader as rootLoader } from "./routes/root";
+import ErrorPage from "./routes/error_page";
 import Index from "./routes/index";
-import SignIn from './routes/signIn';
-import SignUp from './routes/signUp'
-import SignUpOtp from './routes/signUpOtp'
-import index, {loader as rootLoader} from "./routes/root"
-import AccountCreated from './routes/accountCreated';
-import DashboardRoot from './routes/Dashboard';
-// {loader as dashboardLoader}
- 
-// import DashboardIndex from './routes/DashboardIndex';
-import CreatePost from './routes/CreatePost';
-import PostDescription from './routes/PostDescription';
-import { Post } from './routes/Post';
+import SignIn from "./routes/signIn";
+import SignUp from "./routes/signUp";
+import SignUpOtp from "./routes/signUpOtp";
+import AccountCreated from "./routes/accountCreated";
+import DashboardRoot from "./routes/Dashboard";
+
+import CreatePost from "./routes/CreatePost";
+import PostDescription from "./routes/PostDescription";
+import { Post } from "./routes/Posts";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Root/>,
-    errorElement: <ErrorPage/>,
+    element: <Root />,
+    errorElement: <ErrorPage />,
     loader: rootLoader,
 
     children: [
@@ -38,38 +31,38 @@ const router = createBrowserRouter([
       },
       {
         path: "/sign-in",
-        element: <SignIn/>,
+        element: <SignIn />,
       },
       {
         path: "/sign-up",
-        element: <SignUp/>,
+        element: <SignUp />,
       },
       {
         path: "/sign-up-otp",
-        element: <SignUpOtp/>,
+        element: <SignUpOtp />,
       },
       {
         path: "/account-created",
-        element: <AccountCreated/>,
+        element: <AccountCreated />,
       },
       {
         path: "/dashboard",
-        element: <DashboardRoot/>,
+        element: <DashboardRoot />,
         // loader: dashboardLoader,
         // id: 'dashboardroot',
 
         children: [
           {
             index: true,
-            element: <Post/>,
-          },    
+            element: <Post />,
+          },
           {
-            path: ':postId',
-            element: <PostDescription/>,
-          },    
+            path: ":postId",
+            element: <PostDescription />,
+          },
           {
             path: "create-post",
-            element: <CreatePost/>,
+            element: <CreatePost />,
           },
         ],
       },
@@ -77,8 +70,8 @@ const router = createBrowserRouter([
   },
 ]);
 
-createRoot(document.getElementById('root')).render(
+createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <RouterProvider router={router}/>
-  </StrictMode>,
-)
+    <RouterProvider router={router} />
+  </StrictMode>
+);
