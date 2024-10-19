@@ -1,31 +1,19 @@
-import { React, useState, useEffect } from "react";
-// useState is used to handle state, and useEffect handles side effects in the component.
-import { useParams } from "react-router-dom";
+import { React } from "react";
+import { useParams, useOutletContext } from "react-router-dom";
 // Importing useParams from react-router-dom to extract parameters (like postId) from the URL.
-import postData from "../postData.json";
 
 export default function PostDescription() {
   const { postId } = useParams();
   // Extracting the postId from the URL using useParams. This will allow us to identify which post to display.
 
-  const [post, setPost] = useState(null);
-  // This will hold the data of the selected post.
+  const posts = useOutletContext(); // Access posts data from Outlet context
 
-  //perform a side effect when the component mounts or when postId changes.
-  useEffect(() => {
-    setTimeout(() => {
-      // Simulating a network request
-      // Find the post that matches the postId from the URL
-      const selectedPost = postData.posts.find((p) => p.id === postId);
-      // Setting the state variable 'post' with the data of the selected post.
-      setPost(selectedPost);
-    }, 500); // Simulating a delay of 1 second
-  }, [postId]); // The dependency array ensures that this effect runs whenever 'postId' changes.
+  const post = posts.find((p) => p.id === postId); // Find the post by ID
 
-  // If 'post' is still null (meaning data hasn't been loaded yet), display a loading message.
+  // If the post is not found or still loading, show a loader
   if (!post) return <div className="loader">Loading...</div>;
 
-  // Destructuring the 'post' object to get the title, description, commentReply, and comments for easier access.
+  // Destructuring the 'post' object
   const { title, description, commentReply, comments } = post;
 
   return (

@@ -30,7 +30,7 @@ export async function loader({ request, params }) {
 
 export default function index() {
   const { name } = useLoaderData();
-  console.log(name);
+  // console.log(name);
 
   return (
     <div className="rootRoute">

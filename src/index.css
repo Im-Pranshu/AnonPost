@@ -29,7 +29,6 @@
 
 .rootRoute {
   width: 100%;
-  height: 100vh;
 }
 
 .navBar {
@@ -62,14 +61,6 @@
 
 .navBar p {
   margin-right: 100px;
-}
-
-.outlet {
-  display: flex;
-  height: 36rem;
-  padding: 25px;
-  align-items: center;
-  justify-content: center;
 }
 
 /* INdex ROute which is default route */
@@ -231,9 +222,6 @@
 .dashboard {
   font-family: "url", sans-serif;
   display: flex;
-  margin-top: 150px;
-  height: 45rem;
-  width: 100vw;
   justify-content: center;
   gap: 100px;
   color: #ffffff80;
@@ -246,7 +234,7 @@
   margin-top: 40px;
 }
 
-.tabs > * {
+.tabLink {
   display: flex;
   align-items: center;
   width: 290px;
@@ -256,9 +244,6 @@
   font-size: 20px;
   border-radius: 10px;
   padding-left: 24px;
-}
-
-.tabLink {
   background: #ffffff0d;
 }
 
@@ -291,7 +276,6 @@
   font-family: "url", sans-serif;
   margin-top: 0px;
   display: flex;
-  height: 42rem;
   flex-direction: column;
   gap: 15px;
 }
@@ -308,8 +292,13 @@
 
 .postDetailsOutlet {
   border-radius: 10px;
-  height: 100%;
   width: 554px;
+  height: 450px;
+  overflow: scroll;
+}
+
+.postDetailsOutlet::-webkit-scrollbar {
+  display: none;
 }
 
 .post {
@@ -338,9 +327,8 @@
   display: flex; /* Use flexbox for centering */
   justify-content: center; /* Center horizontally */
   align-items: center; /* Center vertically */
-  height: 100%; /* Full viewport height */
   gap: 15px;
-  font-size: 26px; /* Font size for loading text */
+  /* font-size: 26px; Font size for loading text */
   color: #d2d2d2; /* Color of the loading text */
 }
 
@@ -425,7 +413,6 @@
 .postData {
   font-family: "url", sans-serif;
   width: 523px;
-  height: 38rem;
   background: #ffffff0d;
   padding: 25px 25px 10px 28px;
   border-radius: 15px;

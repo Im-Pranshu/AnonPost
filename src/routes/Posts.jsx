@@ -1,25 +1,8 @@
-import React, { useState, useEffect } from "react"; // Importing React and hooks
-import { Link } from "react-router-dom"; // Importing Link for navigation
-import postData from "../postData.json"; // Importing JSON data
+import React from "react"; // Importing React and hooks
+import { Link, useOutletContext } from "react-router-dom"; // Importing Link for navigation
 
-export const Post = () => {
-  const [posts, setPosts] = useState(null); // State to hold the posts
-
-  // useEffect to simulate fetching data
-  useEffect(() => {
-    const fetchData = () => {
-      setTimeout(() => {
-        // Simulating a network request
-        setPosts(postData.posts); // Set posts from JSON data
-        // setLoading(false); // Set loading to false after data is fetched
-      }, 500); // Simulating a delay of 1 second
-    };
-
-    fetchData(); // Call the fetch function
-  }, []); // Empty dependency array ensures this runs once on component mount
-
-  // Display loader if data is still loading
-  if (!posts) return <div className="loader">Loading...</div>;
+const Post = () => {
+  let posts = useOutletContext(); // Access posts data from the parent Dashboard
 
   return (
     <div className="dashboardIndex">
@@ -42,3 +25,24 @@ export const Post = () => {
     </div>
   );
 };
+
+// OLD METHOD
+// const [posts, setPosts] = useState(null); // State to hold the posts
+
+// // useEffect to simulate fetching data
+// useEffect(() => {
+//   const fetchData = () => {
+//     setTimeout(() => {
+//       // Simulating a network request
+//       setPosts(postData.posts); // Set posts from JSON data
+//       // setLoading(false); // Set loading to false after data is fetched
+//     }, 500); // Simulating a delay of 1 second
+//   };
+
+//   fetchData(); // Call the fetch function
+// }, []); // Empty dependency array ensures this runs once on component mount
+
+// // Display loader if data is still loading
+// if (!posts) return <div className="loader">Loading...</div>;
+
+export default Post;

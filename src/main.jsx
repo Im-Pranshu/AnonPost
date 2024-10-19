@@ -11,11 +11,11 @@ import SignIn from "./routes/signIn";
 import SignUp from "./routes/signUp";
 import SignUpOtp from "./routes/signUpOtp";
 import AccountCreated from "./routes/accountCreated";
-import DashboardRoot from "./routes/Dashboard";
 
+import DashboardRoot, { loader as dashboardLoader } from "./routes/Dashboard";
 import CreatePost from "./routes/CreatePost";
 import PostDescription from "./routes/PostDescription";
-import { Post } from "./routes/Posts";
+import Post from "./routes/Posts";
 
 const router = createBrowserRouter([
   {
@@ -48,7 +48,7 @@ const router = createBrowserRouter([
       {
         path: "/dashboard",
         element: <DashboardRoot />,
-        // loader: dashboardLoader,
+        loader: dashboardLoader,
         // id: 'dashboardroot',
 
         children: [
