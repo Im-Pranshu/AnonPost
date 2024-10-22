@@ -63,6 +63,13 @@
   margin-right: 100px;
 }
 
+/* Root Outlet */
+.outlet {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
 /* INdex ROute which is default route */
 
 .index {
@@ -73,14 +80,6 @@
   font-family: "url", sans-serif;
   color: #ffffff;
 }
-
-/* #error-page {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-} */
 
 #error-page div {
   /* border: 1px solid white; */

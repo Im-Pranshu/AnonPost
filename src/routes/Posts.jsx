@@ -4,6 +4,9 @@ import { Link, useOutletContext } from "react-router-dom"; // Importing Link for
 const Post = () => {
   let posts = useOutletContext(); // Access posts data from the parent Dashboard
 
+  // If the post is not found or still loading, show a loader
+  if (!posts) return <div className="loader">Loading...</div>;
+
   return (
     <div className="dashboardIndex">
       {/* Main container for the posts */}
@@ -26,6 +29,8 @@ const Post = () => {
   );
 };
 
+export default Post;
+
 // OLD METHOD
 // const [posts, setPosts] = useState(null); // State to hold the posts
 
@@ -44,5 +49,3 @@ const Post = () => {
 
 // // Display loader if data is still loading
 // if (!posts) return <div className="loader">Loading...</div>;
-
-export default Post;
