@@ -23,8 +23,10 @@ export default function signIn() {
 
       // Redirect to dashboard
       navigate("/dashboard");
+      console.log("Error Message getAuth try - " + errorMessage);
     } catch (error) {
       setErrorMessage(error.message); // Handle errors
+      console.log("Error Message getAuth catch - " + errorMessage);
     }
   };
 
