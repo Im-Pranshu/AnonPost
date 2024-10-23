@@ -5,17 +5,18 @@ import "./index.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import Root, { loader as rootLoader } from "./routes/root";
-import ErrorPage from "./routes/error_page";
-import Index from "./routes/index";
-import SignIn from "./routes/signIn";
-import SignUp from "./routes/signUp";
-import SignUpOtp from "./routes/signUpOtp";
-import AccountCreated from "./routes/accountCreated";
+import ErrorPage from "./pages/error_page";
+import Index from "./pages/index";
+import SignIn, { action as signInAction } from "./pages/signIn";
+import SignUp, { action as signUpAction } from "./pages/signUp";
+// import SignUpOtp from "./routes/signUpOtp";
+import VerifyEmail from "./pages/verifyEmail";
+import AccountCreated from "./pages/accountCreated";
 
-import DashboardRoot, { loader as dashboardLoader } from "./routes/Dashboard";
-import CreatePost from "./routes/CreatePost";
-import PostDescription from "./routes/PostDescription";
-import Post from "./routes/Posts";
+import DashboardRoot, { loader as dashboardLoader } from "./pages/Dashboard";
+import CreatePost from "./pages/CreatePost";
+import PostDescription from "./pages/PostDescription";
+import Post from "./pages/Posts";
 
 const router = createBrowserRouter([
   {
@@ -32,14 +33,18 @@ const router = createBrowserRouter([
       {
         path: "/sign-in",
         element: <SignIn />,
+        action: signInAction,
       },
       {
         path: "/sign-up",
         element: <SignUp />,
+        action: signUpAction,
       },
       {
-        path: "/sign-up-otp",
-        element: <SignUpOtp />,
+        // path: "/sign-up-otp",
+        // element: <SignUpOtp />,
+        path: "/verify-email",
+        element: <VerifyEmail />,
       },
       {
         path: "/account-created",

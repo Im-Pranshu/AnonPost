@@ -20,6 +20,5 @@ const db = getFirestore(app);
 
 // Initialize Firebase Authentication
 const auth = getAuth(app);
-console.log(auth);
 
 export { db, auth }; // Export both Firestore and Auth

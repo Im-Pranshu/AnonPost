@@ -1,17 +1,16 @@
 import { React, useEffect } from "react";
 import hamburger from "../assets/hamburger.png";
-import { Link, Outlet, useLoaderData } from "react-router-dom";
+import { Link, Outlet, useLoaderData, redirect } from "react-router-dom";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
 
 export async function loader({ request, params }) {
-  // console.log(request.url);
-
   // trim url to get the name of the path.
   function trimSubstring(str, substring) {
     return str.replace(substring, "");
   }
   const originalString = request.url;
   const trimmedString = trimSubstring(originalString, "http://localhost:5173/");
-  // console.log("trimmedString",trimmedString);
+  console.log("ROOT LOADER RUNNING", trimmedString);
 
   if (
     trimmedString == "account-created" ||
@@ -19,7 +18,7 @@ export async function loader({ request, params }) {
     trimmedString == "dashboard/create-post"
   ) {
     return {
-      name: "Welcome, Name",
+      name: "Hare Krishna",
     };
   }
 
@@ -30,7 +29,7 @@ export async function loader({ request, params }) {
 
 export default function index() {
   const { name } = useLoaderData();
-  // console.log(name);
+  // console.log("Name: ", name);
 
   return (
     <div className="rootRoute">

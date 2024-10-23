@@ -19,12 +19,12 @@ export default function Dashboard() {
   console.log(posts);
   let location = useLocation();
 
-  const [postCount, setPostCount] = useState(0); // State to store the number of posts
+  // const [postCount, setPostCount] = useState(0); // State to store the number of posts
 
-  // Set post count when data is available
-  useEffect(() => {
-    setPostCount(posts.length); // Update state with the number of posts
-  }, [posts]);
+  // // Set post count when data is available
+  // useEffect(() => {
+  //   setPostCount(posts.length); // Update state with the number of posts
+  // }, [posts]);
 
   return (
     <div className="dashboard">
