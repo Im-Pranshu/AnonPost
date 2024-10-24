@@ -43,7 +43,7 @@ export default function index() {
         </div>
         <div className="userLog">
           <p className="appName userName">{name}</p>
-          <Link>LogOut</Link>
+          {<Link>LogOut</Link>}
         </div>
       </nav>
       <div className="outlet">

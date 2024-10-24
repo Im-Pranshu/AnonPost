@@ -3,7 +3,11 @@ import { Form, useActionData, redirect } from "react-router-dom";
 import rocket from "../assets/rocket.png";
 import rightArrow from "../assets/right-arrow.png";
 
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import {
+  getAuth,
+  onAuthStateChanged,
+  signInWithEmailAndPassword,
+} from "firebase/auth";
 
 export default function SignIn() {
   const actionError = useActionData();
@@ -39,22 +43,32 @@ export async function action({ request }) {
   console.log("SIGNIN ACTION RUNNING");
   const formData = await request.formData();
   const email = formData.get("email");
+  localStorage.setItem("email", email);
   console.log(email);
   const password = formData.get("password");
+  localStorage.setItem("password", password);
   console.log(password);
-  const auth = getAuth();
 
-  const user = auth.currentUser;
-  console.log("UserName : ", user.displayName);
-  localStorage.setItem("userName", user.displayName);
+  const auth = getAuth();
 
   let login;
 
-  if (user) {
-    login = true;
-    console.log("login status : ", login);
-    localStorage.setItem("login", login);
-  }
+  onAuthStateChanged(auth, (user) => {
+    if (user) {
+      login = true;
+      console.log("login status : ", login);
+      localStorage.setItem("login", login);
+
+      const userName = user.displayName;
+      console.log("UserName : ", userName);
+      localStorage.setItem("userName", userName);
+    } else {
+      // User is signed out
+      login = false;
+      console.log("login status : ", login);
+      localStorage.setItem("login", login);
+    }
+  });
 
   try {
     // Sign in user

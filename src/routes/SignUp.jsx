@@ -52,6 +52,10 @@ export async function action({ request }) {
   const email = formData.get("email");
   const password = formData.get("password");
 
+  localStorage.setItem("email", email);
+  localStorage.setItem("password", password);
+  localStorage.setItem("userName", name);
+
   const auth = getAuth();
 
   try {
