@@ -40,39 +40,35 @@ export default function SignIn() {
 }
 
 export async function action({ request }) {
-  console.log("SIGNIN ACTION RUNNING");
+  // console.log("SIGNIN ACTION RUNNING");
+
   const formData = await request.formData();
   const email = formData.get("email");
-  localStorage.setItem("email", email);
-  console.log(email);
+  // console.log(email);
+
   const password = formData.get("password");
-  localStorage.setItem("password", password);
-  console.log(password);
+  // console.log(password);
 
   const auth = getAuth();
 
-  let login;
+  let login; // store the status of login
 
+  // this will access the name of user to display as account owner name
   onAuthStateChanged(auth, (user) => {
     if (user) {
-      login = true;
-      console.log("login status : ", login);
-      localStorage.setItem("login", login);
-
       const userName = user.displayName;
-      console.log("UserName : ", userName);
       localStorage.setItem("userName", userName);
-    } else {
-      // User is signed out
-      login = false;
-      console.log("login status : ", login);
-      localStorage.setItem("login", login);
+      console.log("UserName : ", userName);
     }
   });
 
   try {
     // Sign in user
-    await signInWithEmailAndPassword(auth, email, password);
+    await signInWithEmailAndPassword(auth, email, password).then(() => {
+      login = true;
+      console.log("login authorized : ", login);
+      localStorage.setItem("login", login);
+    });
 
     // Redirect to dashboard
     return redirect("/dashboard");
@@ -81,6 +77,7 @@ export async function action({ request }) {
   }
 }
 
+// old method of code
 // const handleSignIn = async (event) => {
 //   event.preventDefault();
 //   const email = event.target.name.value;

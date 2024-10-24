@@ -27,7 +27,9 @@ export async function loader({ request, params }) {
   };
 }
 
-export default function index() {
+const handleLogout = () => {};
+
+const index = () => {
   const { name } = useLoaderData();
   // console.log("Name: ", name);
   const loginStatus = localStorage.getItem("login");
@@ -42,8 +44,13 @@ export default function index() {
           </Link>
         </div>
         <div className="userLog">
-          <p className="appName userName">{name}</p>
-          {<Link>LogOut</Link>}
+          <p className="appName">{name}</p>
+          <button
+            className={loginStatus ? "showLogOut" : "hideLogOut"}
+            onClick={handleLogout}
+          >
+            LogOut
+          </button>
         </div>
       </nav>
       <div className="outlet">
@@ -51,4 +58,5 @@ export default function index() {
       </div>
     </div>
   );
-}
+};
+export default index;

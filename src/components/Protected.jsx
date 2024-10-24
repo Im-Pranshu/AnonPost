@@ -9,6 +9,8 @@ export const Protected = (props) => {
     let login = localStorage.getItem("login");
     if (!login) {
       navigate("/sign-in");
+    } else {
+      navigate("/dashboard");
     }
   }, []);
 
