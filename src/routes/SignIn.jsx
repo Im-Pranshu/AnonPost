@@ -1,5 +1,11 @@
-import React from "react";
-import { Form, useActionData, redirect } from "react-router-dom";
+import React, { useEffect } from "react";
+import {
+  Link,
+  Form,
+  useActionData,
+  redirect,
+  useNavigate,
+} from "react-router-dom";
 import rocket from "../assets/rocket.png";
 import rightArrow from "../assets/right-arrow.png";
 
@@ -12,6 +18,19 @@ import {
 export default function SignIn() {
   const actionError = useActionData();
   console.log(actionError);
+
+  const navigate = useNavigate(); // Initialize the navigate function from react-router
+
+  useEffect(() => {
+    // Check if the redirectToSignIn flag is set in localStorage
+    const redirectToSignIn = localStorage.getItem("redirectToSignIn");
+
+    // If the flag exists, it means we need to navigate to the sign-in page
+    if (redirectToSignIn) {
+      localStorage.removeItem("redirectToSignIn"); // Clear the flag to prevent repeated redirects
+      navigate("/sign-in"); // Navigate to the sign-in page
+    }
+  }, [navigate]); // Effect runs whenever the navigate function changes
 
   return (
     <div className="signUp">
@@ -30,9 +49,15 @@ export default function SignIn() {
           placeholder="Enter your Password"
           required
         />
-        <button type="submit" className="signUpContinue">
+        <button type="submit" className="signUpContinue signBtn">
           Sign in <img src={rightArrow} alt="" />
         </button>
+        <p>
+          Not registered yet?{" "}
+          <Link className="linkBtnSign" to={"/sign-up"}>
+            SignUp
+          </Link>
+        </p>
       </Form>
       {actionError && <p className="error">{actionError.error}</p>}
     </div>

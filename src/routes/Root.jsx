@@ -1,7 +1,6 @@
-import { React, useEffect } from "react";
+import React from "react";
 import hamburger from "../assets/hamburger.png";
-import { Link, Outlet, useLoaderData, redirect } from "react-router-dom";
-import { getAuth, onAuthStateChanged } from "firebase/auth";
+import { Link, Outlet, useLoaderData } from "react-router-dom";
 
 export async function loader({ request, params }) {
   // trim url to get the name of the path.
@@ -27,12 +26,16 @@ export async function loader({ request, params }) {
   };
 }
 
-const handleLogout = () => {};
-
 const index = () => {
   const { name } = useLoaderData();
-  // console.log("Name: ", name);
+
   const loginStatus = localStorage.getItem("login");
+
+  const handleLogout = () => {
+    localStorage.clear();
+    localStorage.setItem("redirectToSignIn", "true"); // Set a flag to redirect
+    window.location.reload(); // Refresh the page
+  };
 
   return (
     <div className="rootRoute">

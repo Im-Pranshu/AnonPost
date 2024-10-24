@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Form, useActionData, redirect } from "react-router-dom";
+import { Link, Form, useActionData, redirect } from "react-router-dom";
 import rocket from "../assets/rocket.png";
 import rightArrow from "../assets/right-arrow.png";
 
@@ -37,9 +37,15 @@ export default function SignUp() {
           placeholder="Enter Password"
           required
         />
-        <button type="submit" className="signUpContinue">
+        <button type="submit" className="signUpContinue signBtn">
           Continue <img src={rightArrow} alt="" />
         </button>
+        <p>
+          Already registered?{" "}
+          <Link className="linkBtnSign" to={"/sign-in"}>
+            Sign in
+          </Link>
+        </p>
       </Form>
       {errorMessage && <p className="error">{errorMessage}</p>}
     </div>
