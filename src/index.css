@@ -57,6 +57,12 @@
   margin-right: 100px;
 }
 
+.userLog {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 /* Root Outlet */
 .outlet {
   display: flex;

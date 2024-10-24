@@ -18,7 +18,7 @@ export async function loader({ request, params }) {
     trimmedString == "dashboard/create-post"
   ) {
     return {
-      name: "Hare Krishna",
+      name: localStorage.getItem("userName"),
     };
   }
 
@@ -30,17 +30,21 @@ export async function loader({ request, params }) {
 export default function index() {
   const { name } = useLoaderData();
   // console.log("Name: ", name);
+  const loginStatus = localStorage.getItem("login");
 
   return (
     <div className="rootRoute">
       <nav className="navBar">
         <div className="navLogo">
           <img src={hamburger} alt="nav bar of the app" />
-          <Link to="/" className="appName">
+          <Link to={loginStatus ? "/dashboard" : "/"} className="appName">
             ANONYMOUS
           </Link>
         </div>
-        <p className="appName userName">{name}</p>
+        <div className="userLog">
+          <p className="appName userName">{name}</p>
+          <Link>LogOut</Link>
+        </div>
       </nav>
       <div className="outlet">
         <Outlet />

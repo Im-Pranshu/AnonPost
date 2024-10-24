@@ -17,56 +17,56 @@ import DashboardRoot, { loader as dashboardLoader } from "./pages/Dashboard";
 import CreatePost from "./pages/CreatePost";
 import PostDescription from "./pages/PostDescription";
 import Post from "./pages/Posts";
+import { Protected } from "./pages/protected";
+import { Public } from "./pages/public";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Root />,
+    element: <Public Comp={Root} />,
     errorElement: <ErrorPage />,
     loader: rootLoader,
 
     children: [
       {
         index: true, // This renders the Index component at the root path
-        element: <Index />,
+        element: <Public Comp={Index} />,
       },
       {
         path: "/sign-in",
-        element: <SignIn />,
+        element: <Public Comp={SignIn} />,
         action: signInAction,
       },
       {
         path: "/sign-up",
-        element: <SignUp />,
+        element: <Public Comp={SignUp} />,
         action: signUpAction,
       },
       {
-        // path: "/sign-up-otp",
-        // element: <SignUpOtp />,
         path: "/verify-email",
-        element: <VerifyEmail />,
+        element: <Protected Component={VerifyEmail} />,
       },
       {
         path: "/account-created",
-        element: <AccountCreated />,
+        element: <Protected Component={AccountCreated} />,
       },
       {
         path: "/dashboard",
-        element: <DashboardRoot />,
+        element: <Protected Component={DashboardRoot} />,
         loader: dashboardLoader,
 
         children: [
           {
             index: true,
-            element: <Post />,
+            element: <Protected Component={Post} />,
           },
           {
             path: ":postId",
-            element: <PostDescription />,
+            element: <Protected Component={PostDescription} />,
           },
           {
             path: "create-post",
-            element: <CreatePost />,
+            element: <Protected Component={CreatePost} />,
           },
         ],
       },

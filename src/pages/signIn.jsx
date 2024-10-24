@@ -44,6 +44,18 @@ export async function action({ request }) {
   console.log(password);
   const auth = getAuth();
 
+  const user = auth.currentUser;
+  console.log("UserName : ", user.displayName);
+  localStorage.setItem("userName", user.displayName);
+
+  let login;
+
+  if (user) {
+    login = true;
+    console.log("login status : ", login);
+    localStorage.setItem("login", login);
+  }
+
   try {
     // Sign in user
     await signInWithEmailAndPassword(auth, email, password);
