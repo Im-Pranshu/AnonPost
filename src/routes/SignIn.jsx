@@ -5,7 +5,7 @@ import rightArrow from "../assets/right-arrow.png";
 
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 
-export default function signIn() {
+export default function SignIn() {
   const actionError = useActionData();
   console.log(actionError);
 

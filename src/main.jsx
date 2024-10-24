@@ -4,21 +4,21 @@ import "./index.css";
 // Router
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
-import Root, { loader as rootLoader } from "./routes/root";
-import ErrorPage from "./pages/error_page";
-import Index from "./pages/index";
-import SignIn, { action as signInAction } from "./pages/signIn";
-import SignUp, { action as signUpAction } from "./pages/signUp";
+import Root, { loader as rootLoader } from "./Root";
+import ErrorPage from "./routes/Error_page";
+import Index from "./routes/Index";
+import SignIn, { action as signInAction } from "./routes/SignIn";
+import SignUp, { action as signUpAction } from "./routes/SignUp";
 // import SignUpOtp from "./routes/signUpOtp";
-import VerifyEmail from "./pages/verifyEmail";
-import AccountCreated from "./pages/accountCreated";
+import VerifyEmail from "./routes/VerifyEmail";
+import AccountCreated from "./routes/AccountCreated";
 
-import DashboardRoot, { loader as dashboardLoader } from "./pages/Dashboard";
-import CreatePost from "./pages/CreatePost";
-import PostDescription from "./pages/PostDescription";
-import Post from "./pages/Posts";
-import { Protected } from "./pages/protected";
-import { Public } from "./pages/public";
+import DashboardRoot, { loader as dashboardLoader } from "./routes/Dashboard";
+import CreatePost from "./routes/CreatePost";
+import PostDescription from "./routes/PostDescription";
+import Post from "./routes/Posts";
+import { Protected } from "./components/Protected";
+import { Public } from "./components/Public";
 
 const router = createBrowserRouter([
   {

@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import rocket from "../assets/rocket.png";
 import rightArrow from "../assets/right-arrow.png";
 
-export default function index() {
+export default function Index() {
   return (
     <div className="index">
       <div className="rocketDiv">

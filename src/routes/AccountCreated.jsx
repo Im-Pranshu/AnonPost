@@ -3,7 +3,7 @@ import { Link, Navigate } from "react-router-dom";
 import success from "../assets/success.png";
 import rightArrow from "../assets/right-arrow.png";
 
-export default function accountCreated() {
+export default function AccountCreated() {
   const isVerified = localStorage.getItem("isVerified");
 
   if (!isVerified) {

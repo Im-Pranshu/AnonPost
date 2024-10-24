@@ -13,7 +13,7 @@ import {
 import { doc, setDoc } from "firebase/firestore"; // Firestore import
 import { db } from "../firebaseConfig"; // Firestore DB
 
-export default function signUp() {
+export default function SignUp() {
   const actionData = useActionData(); // Get data or errors returned from the action
   const [errorMessage, setErrorMessage] = useState(actionData?.error || "");
 
