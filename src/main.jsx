@@ -4,7 +4,7 @@ import "./index.css";
 // Router
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
-import Root, { loader as rootLoader } from "./Root";
+import Root, { loader as rootLoader } from "./routes/Root";
 import ErrorPage from "./routes/Error_page";
 import Index from "./routes/Index";
 import SignIn, { action as signInAction } from "./routes/SignIn";
