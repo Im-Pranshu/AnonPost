@@ -8,7 +8,7 @@ export const Protected = (props) => {
   useEffect(() => {
     let login = localStorage.getItem("login");
     if (!login) {
-      navigate("/sign-in");
+      navigate("/");
     } else {
       navigate("/dashboard");
     }
