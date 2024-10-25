@@ -22,7 +22,7 @@ export async function loader({ request, params }) {
 
   console.log("ROOT LOADER RUNNING");
   return {
-    name: null,
+    name: null, // Loader does not handle localStorage; client-side will handle this
   };
 }
 
@@ -33,26 +33,28 @@ const index = () => {
     window.location.reload(); // Refresh the page
   };
 
-  // Initialize `loginStatus` state with `null`, and load it in `useEffect` to access `localStorage` in client-side only
-  const [loginStatus, setLoginStatus] = useState(null);
-
-  // Access loader data from the `loader` function, which returns `name: null` initially
   const loaderData = useLoaderData();
-
-  // State to store `name`, initialize with loader data
   const [name, setName] = useState(loaderData.name);
+  const [loginStatus, setLoginStatus] = useState(
+    localStorage.getItem("login") || null
+  ); // Initialize login status from `localStorage`
 
   useEffect(() => {
-    // On client-side load, retrieve `loginStatus` and `userName` from `localStorage`
-    const storedLoginStatus = localStorage.getItem("login");
-    setLoginStatus(storedLoginStatus);
-
-    // Retrieve `userName` and update state if available
+    // Retrieve `name` only once after initial render
     const storedName = localStorage.getItem("userName");
-    if (storedName) {
-      setName(storedName);
-    }
-  }, []); // Run only once when component mounts
+    if (storedName) setName(storedName); // Set `name` if found in localStorage
+  }, []);
+
+  // When localStorage updates `loginStatus`, sync it with component state
+  useEffect(() => {
+    const handleStorageChange = () => {
+      setLoginStatus(localStorage.getItem("login"));
+      setName(localStorage.getItem("userName"));
+    };
+    window.addEventListener("storage", handleStorageChange); // Listen for any localStorage changes
+
+    return () => window.removeEventListener("storage", handleStorageChange); // Cleanup event listener on component unmount
+  }, []);
 
   return (
     <div className="rootRoute">
