@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import hamburger from "../assets/hamburger.png";
 import { Link, Outlet, useLoaderData } from "react-router-dom";
 
