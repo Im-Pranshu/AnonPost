@@ -76,8 +76,6 @@ export async function action({ request }) {
 
   const auth = getAuth();
 
-  let login; // store the status of login
-
   // this will access the name of user to display as account owner name
   onAuthStateChanged(auth, (user) => {
     if (user) {
@@ -87,6 +85,7 @@ export async function action({ request }) {
     }
   });
 
+  let login; // store the status of login
   try {
     // Sign in user
     await signInWithEmailAndPassword(auth, email, password).then(() => {
