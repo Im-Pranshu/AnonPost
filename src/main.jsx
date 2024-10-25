@@ -1,10 +1,11 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import "./index.css";
+
 // Router
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
-import Root, { loader as rootLoader } from "./routes/Root";
+import Root from "./routes/Root";
 import ErrorPage from "./routes/Error_page";
 import Index from "./routes/Index";
 import SignIn, { action as signInAction } from "./routes/SignIn";
@@ -14,8 +15,10 @@ import VerifyEmail from "./routes/VerifyEmail";
 import AccountCreated from "./routes/AccountCreated";
 
 import DashboardRoot, { loader as dashboardLoader } from "./routes/Dashboard";
-import CreatePost from "./routes/CreatePost";
-import PostDescription from "./routes/PostDescription";
+import CreatePost, { action as createPostAction } from "./routes/CreatePost";
+import PostDescription, {
+  action as postDescriptionAction,
+} from "./routes/PostDescription";
 import Post from "./routes/Posts";
 import { Protected } from "./components/Protected";
 
@@ -24,7 +27,6 @@ const router = createBrowserRouter([
     path: "/",
     element: <Protected Component={Root} />,
     errorElement: <ErrorPage />,
-    loader: rootLoader,
 
     children: [
       {
@@ -62,10 +64,12 @@ const router = createBrowserRouter([
           {
             path: ":postId",
             element: <Protected Component={PostDescription} />,
+            action: postDescriptionAction,
           },
           {
             path: "create-post",
             element: <Protected Component={CreatePost} />,
+            action: createPostAction,
           },
         ],
       },

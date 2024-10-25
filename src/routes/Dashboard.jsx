@@ -1,40 +1,46 @@
-import { React, useState, useEffect } from "react";
+import React from "react";
 import { Link, Outlet, useLoaderData, useLocation } from "react-router-dom";
 import addPost from "../assets/add-post.png";
 
-import { collection, getDocs } from "firebase/firestore"; // Firebase Firestore imports
+import { collection, query, orderBy, getDocs } from "firebase/firestore"; // Firebase Firestore imports
 import { db } from "../firebaseConfig"; // Importing Firestore config
 
 // Loader function to fetch data from Firebase
 export async function loader() {
   const postCollection = collection(db, "posts"); // Replace 'posts' with your Firestore collection name
-  const postSnapshot = await getDocs(postCollection); // Fetch the documents
-  const posts = postSnapshot.docs.map((doc) => doc.data()); // Map data
+
+  // Query to get all posts ordered by their creation time
+  const q = query(postCollection, orderBy("createdAt", "asc")); // "asc" for ascending order
+
+  // Fetch the documents based on the query
+  const querySnapshot = await getDocs(q);
+
+  // Map through the documents to get post data
+  const posts = querySnapshot.docs.map((doc) => doc.data());
+
+  // const postSnapshot = await getDocs(postCollection); // Fetch the documents
+  // const posts = postSnapshot.docs.map((doc) => doc.data()); // Map data
 
   return { posts }; // Return posts as part of the loader data
 }
 
 export default function Dashboard() {
   const { posts } = useLoaderData(); // Use useLoaderData to access the data returned from the loader
-  console.log(posts);
+
   let location = useLocation();
-
-  // const [postCount, setPostCount] = useState(0); // State to store the number of posts
-
-  // // Set post count when data is available
-  // useEffect(() => {
-  //   setPostCount(posts.length); // Update state with the number of posts
-  // }, [posts]);
 
   return (
     <div className="dashboard">
       <div className="tabs">
-        <Link to={"/dashboard"} className="active tabLink">
+        <Link to={"/dashboard"} className="active tabLink allBtn">
           All Post
         </Link>
-        <Link className="tabLink">Commented Post</Link>
-        <Link className="tabLink">Replied Post</Link>
-        <Link to={"/dashboard/create-post"} className="createPost tabLink">
+        <Link className="tabLink allBtn">Commented Post</Link>
+        <Link className="tabLink allBtn">Replied Post</Link>
+        <Link
+          to={"/dashboard/create-post"}
+          className="createPost tabLink allBtn"
+        >
           <img src={addPost} alt="add post logo" /> Create Post
         </Link>
       </div>

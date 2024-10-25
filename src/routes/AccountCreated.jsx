@@ -1,16 +1,9 @@
-import React from "react";
-import { Link, Navigate } from "react-router-dom";
+import React, { useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import success from "../assets/success.png";
 import rightArrow from "../assets/right-arrow.png";
 
 export default function AccountCreated() {
-  const isVerified = localStorage.getItem("isVerified");
-
-  if (!isVerified) {
-    // If not verified, redirect to sign-up OTP page
-    return <Navigate to="/sign-up-otp" />;
-  }
-
   return (
     <div className="signUp actCreated">
       <img src={success} alt="" />

@@ -1,6 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,100..900;1,100..900&display=swap");
 
 :root {
+  color-scheme: light dark;
   background-color: black;
 }
 
@@ -200,11 +201,11 @@
   width: 15px;
 }
 
-.signBtn {
+.allBtn {
   transition: 0.3s;
 }
 
-.signBtn:hover {
+.allBtn:hover {
   background: white;
   color: black;
   transition: 0.4s;
@@ -213,7 +214,7 @@
   cursor: pointer;
 }
 
-.signBtn:hover img {
+.allBtn:hover img {
   filter: invert(100%);
 }
 
@@ -485,7 +486,7 @@
 }
 
 .reply {
-  margin-bottom: 16px;
+  margin: 16px;
 }
 
 .replyOfReply {
@@ -495,4 +496,49 @@
 
 .replyToCmt {
   margin-left: 88px;
+}
+
+.replyForm,
+.commentForm {
+  display: flex;
+  gap: 20px;
+}
+
+.replyForm > *,
+.commentForm > * {
+  text-decoration: none;
+  border: none;
+  border-radius: 5px;
+}
+
+.replyForm input,
+.commentForm input {
+  padding-left: 10px;
+  background: rgb(41, 41, 41);
+  color: white;
+  border: 1px solid white;
+}
+
+.replyForm button,
+.commentForm button {
+  padding: 5px;
+  background: black;
+  color: white;
+  box-shadow: 2px 1px 2px white;
+}
+
+.commentForm {
+  margin: 20px;
+  height: 30px;
+  padding-left: 10px;
+}
+
+.replyForm input {
+  font-size: 12px;
+  height: 22px;
+}
+
+.replyForm button {
+  font-size: 10px;
+  height: 22px;
 }

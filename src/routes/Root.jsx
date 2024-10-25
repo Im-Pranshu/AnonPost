@@ -1,13 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import hamburger from "../assets/hamburger.png";
-import { Link, Outlet, useLoaderData } from "react-router-dom";
-
-export async function loader({ request, params }) {
-  console.log("ROOT LOADER RUNNING");
-  return {
-    name: null, // Loader does not handle localStorage; client-side will handle this
-  };
-}
+import { Link, Outlet } from "react-router-dom";
 
 const index = () => {
   const loginStatus = localStorage.getItem("login");
@@ -28,7 +21,7 @@ const index = () => {
           </Link>
         </div>
         <div className="userLog">
-          <p className="appName">{name}</p>
+          <p className="appName">{loginStatus ? name : ""}</p>
           <button
             className={loginStatus ? "showLogOut" : "hideLogOut"}
             onClick={handleLogout}

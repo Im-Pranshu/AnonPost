@@ -25,7 +25,7 @@ export default function Index() {
       </div>
       <h1>Start posting anonymously where no one will judge.</h1>
       <p>Welcome to Stranger discussion forum</p>
-      <Link to={"sign-up"} className="signUpBtn signBtn" href="/signUp">
+      <Link to={"sign-up"} className="signUpBtn allBtn" href="/signUp">
         Create Your Account{" "}
         <img className="signUpImg" src={rightArrow} alt="" />
       </Link>

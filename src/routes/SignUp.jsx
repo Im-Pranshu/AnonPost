@@ -7,6 +7,7 @@ import rightArrow from "../assets/right-arrow.png";
 import {
   getAuth,
   createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
   sendEmailVerification,
   updateProfile, // Added for updating user profile with display name
 } from "firebase/auth";
@@ -15,9 +16,6 @@ import { db } from "../firebaseConfig"; // Firestore DB
 
 export default function SignUp() {
   const actionData = useActionData(); // Get data or errors returned from the action
-  const [errorMessage, setErrorMessage] = useState(actionData?.error || "");
-
-  console.log(errorMessage);
 
   return (
     <div className="signUp">
@@ -37,7 +35,7 @@ export default function SignUp() {
           placeholder="Enter Password"
           required
         />
-        <button type="submit" className="signUpContinue signBtn">
+        <button type="submit" className="signUpContinue allBtn">
           Continue <img src={rightArrow} alt="" />
         </button>
         <p>
@@ -47,7 +45,7 @@ export default function SignUp() {
           </Link>
         </p>
       </Form>
-      {errorMessage && <p className="error">{errorMessage}</p>}
+      {actionData && <p className="error">{actionData.error}</p>}
     </div>
   );
 }
@@ -78,7 +76,7 @@ export async function action({ request }) {
 
     // Send email verification with a custom URL
     await sendEmailVerification(user, {
-      url: "http://localhost:5173/account-created", // Customize this URL for your verification page
+      url: "http://localhost:5173/sign-in", // Customize this URL for your verification page
       handleCodeInApp: true, // Ensures the app handles the verification
     });
 
