@@ -20,7 +20,7 @@ export async function loader({ request, params }) {
   //   };
   // }
 
-  console.log("ROOT LOADER RUNNING", trimmedString);
+  console.log("ROOT LOADER RUNNING");
   return {
     name: null,
   };
