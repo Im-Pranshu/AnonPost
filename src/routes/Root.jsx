@@ -39,22 +39,31 @@ const index = () => {
     localStorage.getItem("login") || null
   ); // Initialize login status from `localStorage`
 
+  // useEffect(() => {
+  //   // Retrieve `name` only once after initial render
+  //   const storedName = localStorage.getItem("userName");
+  //   if (storedName) setName(storedName); // Set `name` if found in localStorage
+  // }, []);
+
+  // // When localStorage updates `loginStatus`, sync it with component state
+  // useEffect(() => {
+  //   const handleStorageChange = () => {
+  //     setLoginStatus(localStorage.getItem("login"));
+  //     setName(localStorage.getItem("userName"));
+  //   };
+  //   window.addEventListener("storage", handleStorageChange); // Listen for any localStorage changes
+
+  //   return () => window.removeEventListener("storage", handleStorageChange); // Cleanup event listener on component unmount
+  // }, []);
+
+  // Fetch login status and username from localStorage
   useEffect(() => {
-    // Retrieve `name` only once after initial render
+    const storedLoginStatus = localStorage.getItem("login");
+    setLoginStatus(storedLoginStatus);
+
     const storedName = localStorage.getItem("userName");
-    if (storedName) setName(storedName); // Set `name` if found in localStorage
-  }, []);
-
-  // When localStorage updates `loginStatus`, sync it with component state
-  useEffect(() => {
-    const handleStorageChange = () => {
-      setLoginStatus(localStorage.getItem("login"));
-      setName(localStorage.getItem("userName"));
-    };
-    window.addEventListener("storage", handleStorageChange); // Listen for any localStorage changes
-
-    return () => window.removeEventListener("storage", handleStorageChange); // Cleanup event listener on component unmount
-  }, []);
+    setName(storedName);
+  }, []); // Run only on initial mount
 
   return (
     <div className="rootRoute">
