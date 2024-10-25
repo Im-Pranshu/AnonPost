@@ -1,9 +1,22 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import rocket from "../assets/rocket.png";
 import rightArrow from "../assets/right-arrow.png";
 
 export default function Index() {
+  const navigate = useNavigate(); // Initialize the navigate function from react-router
+
+  useEffect(() => {
+    // Check if the redirectToSignIn flag is set in localStorage
+    const redirectToSignIn = localStorage.getItem("redirectToSignIn");
+
+    // If the flag exists, it means we need to navigate to the sign-in page
+    if (redirectToSignIn) {
+      localStorage.removeItem("redirectToSignIn"); // Clear the flag to prevent repeated redirects
+      navigate("/sign-in"); // Navigate to the sign-in page
+    }
+  }, [navigate]); // Effect runs whenever the navigate function changes
+
   return (
     <div className="index">
       <div className="rocketDiv">
