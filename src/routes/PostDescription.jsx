@@ -1,5 +1,10 @@
 import { React, useEffect, useRef, useTransition } from "react";
-import { useParams, useOutletContext, Form, redirect } from "react-router-dom";
+import {
+  useParams,
+  useOutletContext,
+  useFetcher,
+  redirect,
+} from "react-router-dom";
 // Importing useParams from react-router-dom to extract parameters (like postId) from the URL.
 
 import {
@@ -28,18 +33,18 @@ export default function PostDescription() {
   // Destructuring the 'post' object
   const { title, description, commentReply, comments } = post;
 
-  // let transtition = useTransition();
-  // let isAdding =
-  //   transtition.state === "submitting" &&
-  //   transtition.submission.formData.get("_action") === "create";
+  // Logic to clear the form after submitting.
+  const fetcher = useFetcher();
+  const commentFormRef = useRef(null);
+  const replyFormRefs = useRef([]); // Array to manage multiple reply forms
 
-  // let formRef = useRef();
-
-  // useEffect(() => {
-  //   if (!isAdding) {
-  //     formRef.current?.reset();
-  //   }
-  // }, [isAdding]);
+  // Clear input fields after submission
+  useEffect(() => {
+    if (fetcher.state === "idle") {
+      commentFormRef.current?.reset();
+      replyFormRefs.current.forEach((form) => form?.reset());
+    }
+  }, [fetcher.state]);
 
   return (
     <div className="dashboardIndex">
@@ -90,7 +95,11 @@ export default function PostDescription() {
                   {/* Displaying the replier's name and the reply itself */}
                 </p>
               ))}
-              <Form className="replyForm" method="post">
+              <fetcher.Form
+                ref={(el) => (replyFormRefs.current[index] = el)}
+                className="replyForm"
+                method="post"
+              >
                 {/* Pass commentIndex */}
                 <input type="hidden" name="commentIndex" value={index} />
                 {/* Hidden input for index of comment*/}
@@ -105,22 +114,28 @@ export default function PostDescription() {
                 <button className="allBtn" type="submit">
                   Reply
                 </button>
-              </Form>
+              </fetcher.Form>
             </div>
           ))}
 
-          <Form className="commentForm" method="post">
+          <fetcher.Form
+            ref={commentFormRef}
+            className="commentForm"
+            method="post"
+          >
             {/* Hidden input for index */}
             <input type="hidden" name="postId" value={postId} />
+
             <input
               name="addComment"
               placeholder="Comment on this post."
               required
             />
+
             <button className="allBtn" type="submit">
               Add New Comment
             </button>
-          </Form>
+          </fetcher.Form>
         </div>
       </div>
     </div>
@@ -132,9 +147,7 @@ export async function action({ request }) {
   const formData = await request.formData();
 
   const postId = formData.get("postId"); // Assuming you pass postId in the forms
-
   const comment = formData.get("addComment");
-
   const reply = formData.get("replyOnComment");
 
   // Query the collection for the document with the "id" field matching postId (like post5)

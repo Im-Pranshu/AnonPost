@@ -1,5 +1,5 @@
 import React from "react";
-import { Form, redirect } from "react-router-dom";
+import { Form, redirect, useNavigation } from "react-router-dom";
 
 import {
   collection,
@@ -11,9 +11,14 @@ import {
   serverTimestamp,
   setDoc,
 } from "firebase/firestore";
+
 import { db } from "../firebaseConfig";
+import Button from "../components/Button";
 
 export default function CreatePost() {
+  const navigation = useNavigation();
+  const isSubmitting = navigation.state === "submitting"; // Check if the form is being submitted
+
   return (
     <div className="createPostRoute">
       <Form method="post">
@@ -22,13 +27,20 @@ export default function CreatePost() {
           name="post-title"
           id="post-title"
           placeholder="Post Title.."
+          required
         />
         <textarea
           name="post-description"
           id="post-description"
           placeholder="Describe your post..."
+          required
         ></textarea>
-        <button className="submitPost allBtn">Submit Post</button>
+        <Button
+          content={"Submit Post"}
+          clickStatus={isSubmitting}
+          customClasses={"submitPost"}
+        />
+        ;
       </Form>
     </div>
   );

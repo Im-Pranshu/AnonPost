@@ -372,8 +372,8 @@
 .loader:before {
   content: ""; /* Empty content for the loader */
   display: inline-block; /* Required for animation */
-  width: 40px; /* Width of the spinner */
-  height: 40px; /* Height of the spinner */
+  width: 20px; /* Width of the spinner */
+  height: 20px; /* Height of the spinner */
   border: 5px solid #ccc; /* Light gray border */
   border-top-color: #242424; /* Color for the spinner's top */
   border-radius: 50%; /* Make it circular */
@@ -432,8 +432,8 @@
 }
 
 .submitPost {
-  width: 290px;
-  height: 57px;
+  width: 300px;
+  height: 60px;
   background: #ffffff1a;
   color: #ffffff80;
   font-size: 20px;

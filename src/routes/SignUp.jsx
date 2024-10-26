@@ -1,13 +1,18 @@
-import React, { useState } from "react";
-import { Link, Form, useActionData, redirect } from "react-router-dom";
+import React from "react";
+import {
+  Link,
+  Form,
+  useActionData,
+  redirect,
+  useNavigation,
+} from "react-router-dom";
 import rocket from "../assets/rocket.png";
-import rightArrow from "../assets/right-arrow.png";
+import Button from "../components/Button";
 
 // firebase account creation
 import {
   getAuth,
   createUserWithEmailAndPassword,
-  signInWithEmailAndPassword,
   sendEmailVerification,
   updateProfile, // Added for updating user profile with display name
 } from "firebase/auth";
@@ -16,6 +21,9 @@ import { db } from "../firebaseConfig"; // Firestore DB
 
 export default function SignUp() {
   const actionData = useActionData(); // Get data or errors returned from the action
+
+  const navigation = useNavigation();
+  const isSubmitting = navigation.state === "submitting";
 
   return (
     <div className="signUp">
@@ -35,9 +43,13 @@ export default function SignUp() {
           placeholder="Enter Password"
           required
         />
-        <button type="submit" className="signUpContinue allBtn">
-          Continue <img src={rightArrow} alt="" />
-        </button>
+
+        <Button
+          content={"Sign up"}
+          clickStatus={isSubmitting}
+          customClasses={"signUpContinue"}
+        />
+
         <p>
           Already registered?{" "}
           <Link className="linkBtnSign" to={"/sign-in"}>

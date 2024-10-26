@@ -1,7 +1,12 @@
-import React, { useEffect } from "react";
-import { Link, Form, useActionData, redirect } from "react-router-dom";
+import React from "react";
+import {
+  Link,
+  Form,
+  useActionData,
+  redirect,
+  useNavigation,
+} from "react-router-dom";
 import rocket from "../assets/rocket.png";
-import rightArrow from "../assets/right-arrow.png";
 
 import {
   getAuth,
@@ -9,8 +14,13 @@ import {
   signInWithEmailAndPassword,
 } from "firebase/auth";
 
+import Button from "../components/Button";
+
 export default function SignIn() {
   const actionError = useActionData();
+
+  const navigation = useNavigation();
+  const isSubmitting = navigation.state === "submitting"; // Check if the form is being submitted
 
   return (
     <div className="signUp">
@@ -29,9 +39,13 @@ export default function SignIn() {
           placeholder="Enter your Password"
           required
         />
-        <button type="submit" className="signUpContinue allBtn">
-          Sign in <img src={rightArrow} alt="" />
-        </button>
+
+        <Button
+          content={"Sign in"}
+          clickStatus={isSubmitting}
+          customClasses={"signUpContinue"}
+        />
+
         <p>
           Not registered yet?{" "}
           <Link className="linkBtnSign" to={"/sign-up"}>
