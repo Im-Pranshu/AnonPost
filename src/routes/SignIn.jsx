@@ -46,6 +46,8 @@ export default function SignIn() {
           customClasses={"signUpContinue"}
         />
 
+        {actionError && <p className="error">{actionError.error}</p>}
+
         <p>
           Not registered yet?{" "}
           <Link className="linkBtnSign" to={"/sign-up"}>
@@ -53,7 +55,6 @@ export default function SignIn() {
           </Link>
         </p>
       </Form>
-      {actionError && <p className="error">{actionError.error}</p>}
     </div>
   );
 }
