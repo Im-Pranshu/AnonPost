@@ -64,12 +64,12 @@ Let your thoughts flow freely without revealing your identity! 🌈
 └── vite.config.js
 ```
 
-## 🛠 Installation and Setup
+### 🛠 Installation and Setup
 Ready to get started? Here’s how to set up Anonymous locally.
 
 ## 🔗 Prerequisites
 Node.js and npm: Download Node.js if you don’t have them installed.
-📥 Setup Steps
+## 📥 Setup Steps
 1. **Clone the Repository**:
    ```bash
    git clone https://github.com/yourusername/Anonymous.git
