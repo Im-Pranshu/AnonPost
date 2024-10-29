@@ -26,7 +26,7 @@ const index = () => {
             className={loginStatus ? "showLogOut" : "hideLogOut"}
             onClick={handleLogout}
           >
-            LogOut
+            Logout
           </button>
         </div>
       </nav>

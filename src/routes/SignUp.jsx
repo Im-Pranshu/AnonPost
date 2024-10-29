@@ -47,14 +47,14 @@ export default function SignUp() {
         <Button
           content={"Sign up"}
           clickStatus={isSubmitting}
-          customClasses={"signUpContinue"}
+          customClasses={"logBtn"}
         />
 
         {actionData && <p className="error">{actionData.error}</p>}
 
         <p>
           Already registered?{" "}
-          <Link className="linkBtnSign" to={"/sign-in"}>
+          <Link className="linkBtn" to={"/sign-in"}>
             Sign in
           </Link>
         </p>

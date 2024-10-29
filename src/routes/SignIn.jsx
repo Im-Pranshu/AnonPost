@@ -43,14 +43,14 @@ export default function SignIn() {
         <Button
           content={"Sign in"}
           clickStatus={isSubmitting}
-          customClasses={"signUpContinue"}
+          customClasses={"logBtn"}
         />
 
         {actionError && <p className="error">{actionError.error}</p>}
 
         <p>
           Not registered yet?{" "}
-          <Link className="linkBtnSign" to={"/sign-up"}>
+          <Link className="linkBtn" to={"/sign-up"}>
             SignUp
           </Link>
         </p>
