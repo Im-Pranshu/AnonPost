@@ -10,10 +10,8 @@ import ErrorPage from "./routes/Error_page";
 import Index from "./routes/Index";
 import SignIn, { action as signInAction } from "./routes/SignIn";
 import SignUp, { action as signUpAction } from "./routes/SignUp";
-// import SignUpOtp from "./routes/signUpOtp";
 import VerifyEmail from "./routes/VerifyEmail";
 import AccountCreated from "./routes/AccountCreated";
-
 import DashboardRoot, { loader as dashboardLoader } from "./routes/Dashboard";
 import CreatePost, { action as createPostAction } from "./routes/CreatePost";
 import PostDescription, {

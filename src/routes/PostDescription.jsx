@@ -109,6 +109,7 @@ export default function PostDescription() {
                   name="replyOnComment"
                   placeholder="Reply to this comment"
                   className="replyOfReply"
+                  autoComplete="off" // Disable autocomplete for comment input
                   required
                 />
                 <button className="allBtn" type="submit">
@@ -129,6 +130,7 @@ export default function PostDescription() {
             <input
               name="addComment"
               placeholder="Comment on this post."
+              autoComplete="off" // Disable autocomplete for comment input
               required
             />
 

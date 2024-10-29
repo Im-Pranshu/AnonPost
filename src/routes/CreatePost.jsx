@@ -27,12 +27,14 @@ export default function CreatePost() {
           name="post-title"
           id="post-title"
           placeholder="Post Title.."
+          autoComplete="off" // Disable autocomplete for comment input
           required
         />
         <textarea
           name="post-description"
           id="post-description"
           placeholder="Describe your post..."
+          autoComplete="off" // Disable autocomplete for comment input
           required
         ></textarea>
         <Button
@@ -51,6 +53,13 @@ export async function action({ request }) {
   const formData = await request.formData();
   const title = formData.get("post-title");
   const description = formData.get("post-description");
+
+  // Get the current user's ID
+  const user = auth.currentUser;
+  if (!user) {
+    throw new Error("User not authenticated"); // Make sure the user is logged in
+  }
+  const userId = user.uid;
 
   // Reference to the counter document (could be in a separate collection for metadata)
   const counterDocRef = doc(db, "metadata", "postCounter");
@@ -86,6 +95,7 @@ export async function action({ request }) {
   await addDoc(postCollection, {
     createdAt: serverTimestamp(), // Add a timestamp to track when the post was created
     id: newPostId, // Use the calculated ID
+    createdBy: userId, // Store the user ID with the post
     title,
     description,
     commentReply: { commentsCount: 0, repliesCount: 0 },

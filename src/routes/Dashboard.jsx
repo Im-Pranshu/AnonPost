@@ -35,6 +35,7 @@ export default function Dashboard() {
         <Link to={"/dashboard"} className="active tabLink allBtn">
           All Post
         </Link>
+        <Link className="tabLink allBtn">My Posts</Link>
         <Link className="tabLink allBtn">Commented Post</Link>
         <Link className="tabLink allBtn">Replied Post</Link>
         <Link
