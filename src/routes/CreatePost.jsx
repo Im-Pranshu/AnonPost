@@ -12,6 +12,8 @@ import {
   setDoc,
 } from "firebase/firestore";
 
+import { getAuth } from "firebase/auth";
+
 import { db } from "../firebaseConfig";
 import Button from "../components/Button";
 
@@ -53,6 +55,8 @@ export async function action({ request }) {
   const formData = await request.formData();
   const title = formData.get("post-title");
   const description = formData.get("post-description");
+
+  const auth = getAuth();
 
   // Get the current user's ID
   const user = auth.currentUser;

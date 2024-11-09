@@ -51,7 +51,7 @@ export default function SignIn() {
         <p>
           Not registered yet?{" "}
           <Link className="linkBtn" to={"/sign-up"}>
-            SignUp
+            Sign up
           </Link>
         </p>
       </Form>

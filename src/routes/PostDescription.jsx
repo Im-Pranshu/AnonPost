@@ -46,6 +46,10 @@ export default function PostDescription() {
     }
   }, [fetcher.state]);
 
+  // extracting post no from a string of postID.
+  var postNo = postId.match(/\d/g);
+  postNo = postNo.join("");
+
   return (
     <div className="dashboardIndex">
       {/* Main container for the post display, styled with the 'dashboardIndex' class */}
@@ -53,7 +57,9 @@ export default function PostDescription() {
       <div className="postData">
         {/* Container for the post details, styled with the 'postData' class */}
 
-        <h3>{title}</h3>
+        <h3>
+          <span className="postNo">Post {postNo}:</span> {title}
+        </h3>
         {/* Displaying the post title */}
 
         <p>{description}</p>
@@ -107,7 +113,7 @@ export default function PostDescription() {
 
                 <input
                   name="replyOnComment"
-                  placeholder="Reply to this comment"
+                  placeholder="Reply on this comment"
                   className="replyOfReply"
                   autoComplete="off" // Disable autocomplete for comment input
                   required

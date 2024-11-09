@@ -496,7 +496,7 @@
 }
 
 .postData > p {
-  margin-bottom: 17px;
+  margin: 6px 0px 10px 0px;
 }
 
 .commentReply {
@@ -517,11 +517,12 @@
 }
 
 .reply {
-  margin: 16px;
+  margin: 10px;
 }
 
 .replyOfReply {
-  margin-left: 88px;
+  position: relative;
+  margin-left: 60px;
   margin-bottom: 6px;
 }
 
@@ -559,7 +560,7 @@
 }
 
 .commentForm {
-  margin: 20px;
+  margin: 20px 0px;
   height: 30px;
   padding-left: 10px;
 }
