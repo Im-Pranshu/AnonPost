@@ -497,6 +497,7 @@
 
 .postData > p {
   margin: 6px 0px 10px 0px;
+  white-space: pre-wrap;
 }
 
 .commentReply {
