@@ -18,6 +18,7 @@ import {
   increment,
 } from "firebase/firestore";
 import { db } from "../firebaseConfig"; // Make sure to import your Firestore configuration
+import { getAuth } from "firebase/auth";
 
 export default function PostDescription() {
   const { postId } = useParams();
@@ -174,6 +175,11 @@ export async function action({ request }) {
   // access the name of current user to store in comment or reply
   const userName = localStorage.getItem("userName");
 
+  const auth = getAuth();
+  // Get the current user's ID
+  const user = auth.currentUser;
+  const userId = user.uid;
+
   if (comment) {
     // Handle adding a new comment
 
@@ -182,7 +188,8 @@ export async function action({ request }) {
         commenter: userName,
         comment,
         replies: [], // Start with no replies
-      }), // Replace "Your Name" with actual commenter
+        createdBy: userId, // Store the user ID with the post
+      }),
       "commentReply.commentsCount": increment(1), // Update comments count
     });
   } else if (reply) {
@@ -200,6 +207,7 @@ export async function action({ request }) {
         comments[commentIndex].replies = comments[commentIndex].replies || [];
         comments[commentIndex].replies.push({
           replier: userName, // Use actual replier dynamically
+          replierUID: userId, // Store the user ID who is replying
           reply,
         });
 

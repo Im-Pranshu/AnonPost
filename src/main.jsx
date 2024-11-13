@@ -13,6 +13,9 @@ import SignUp, { action as signUpAction } from "./routes/SignUp";
 import VerifyEmail from "./routes/VerifyEmail";
 import AccountCreated from "./routes/AccountCreated";
 import DashboardRoot, { loader as dashboardLoader } from "./routes/Dashboard";
+import MyPosts from "./routes/MyPosts";
+import CommentedPosts from "./routes/CommentedPosts";
+import RepliedPosts from "./routes/RepliedPosts";
 import CreatePost, { action as createPostAction } from "./routes/CreatePost";
 import PostDescription, {
   action as postDescriptionAction,
@@ -63,6 +66,18 @@ const router = createBrowserRouter([
             path: ":postId",
             element: <Protected Component={PostDescription} />,
             action: postDescriptionAction,
+          },
+          {
+            path: "my-posts",
+            element: <Protected Component={MyPosts} />,
+          },
+          {
+            path: "commented-posts",
+            element: <Protected Component={CommentedPosts} />,
+          },
+          {
+            path: "replied-posts",
+            element: <Protected Component={RepliedPosts} />,
           },
           {
             path: "create-post",

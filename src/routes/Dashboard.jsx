@@ -4,57 +4,97 @@ import addPost from "../assets/add-post.png";
 
 import { collection, query, orderBy, getDocs } from "firebase/firestore"; // Firebase Firestore imports
 import { db } from "../firebaseConfig"; // Importing Firestore config
+import { getAuth } from "firebase/auth"; // Import Firebase Auth
 
 // Loader function to fetch data from Firebase
 export async function loader() {
-  const postCollection = collection(db, "posts"); // Replace 'posts' with your Firestore collection name
-
-  // Query to get all posts ordered by their creation time
-  const q = query(postCollection, orderBy("createdAt", "asc")); // "asc" for ascending order
-
-  // Fetch the documents based on the query
+  const postCollection = collection(db, "posts");
+  const q = query(postCollection, orderBy("createdAt", "asc"));
   const querySnapshot = await getDocs(q);
-
-  // Map through the documents to get post data
-  const posts = querySnapshot.docs.map((doc) => doc.data());
-
-  // const postSnapshot = await getDocs(postCollection); // Fetch the documents
-  // const posts = postSnapshot.docs.map((doc) => doc.data()); // Map data
-
-  return { posts }; // Return posts as part of the loader data
+  const posts = querySnapshot.docs.map((doc) => ({
+    id: doc.id,
+    ...doc.data(),
+  }));
+  return { posts };
 }
 
 export default function Dashboard() {
   const { posts } = useLoaderData(); // Use useLoaderData to access the data returned from the loader
-
   let location = useLocation();
+  const auth = getAuth();
+  const user = auth.currentUser;
+
+  // Function to set the active tab based on the current location
+  const getLinkClass = (path, extraClass = "") => {
+    const isActive = location.pathname === path;
+    return `${isActive ? "active" : ""} tabLink allBtn ${extraClass}`;
+  };
+
+  // Define the heading based on the current path, including post count
+  const getHeading = () => {
+    if (location.pathname.includes("create-post")) {
+      return "Create Post";
+    } else if (location.pathname.includes("my-posts")) {
+      return `My Posts (${
+        posts.filter((post) => post.createdBy === user?.uid).length
+      })`;
+    } else if (location.pathname.includes("commented-posts")) {
+      // Filter posts where the user has commented
+      const commentedPostsCount = posts.filter((post) =>
+        post.comments.some((comment) => comment.createdBy === user?.uid)
+      ).length;
+      return `Commented Posts (${commentedPostsCount})`;
+    } else if (location.pathname.includes("replied-posts")) {
+      // Filter posts where the user has replied to any comment
+      const repliedPostsCount = posts.filter((post) =>
+        post.comments.some((comment) =>
+          comment.replies?.some((reply) => reply.replierUID === user?.uid)
+        )
+      ).length;
+      return `Replied Posts (${repliedPostsCount})`;
+    } else {
+      return `All Posts (${posts.length})`;
+    }
+  };
 
   return (
     <div className="dashboard">
       <div className="tabs">
-        <Link to={"/dashboard"} className="active tabLink allBtn">
+        <Link to={"/dashboard"} className={getLinkClass("/dashboard")}>
           All Post
         </Link>
-        <Link className="tabLink allBtn">My Posts</Link>
-        <Link className="tabLink allBtn">Commented Post</Link>
-        <Link className="tabLink allBtn">Replied Post</Link>
+        <Link
+          to={"/dashboard/my-posts"}
+          className={getLinkClass("/dashboard/my-posts")}
+        >
+          My Posts
+        </Link>
+        <Link
+          to={"/dashboard/commented-posts"}
+          className={getLinkClass("/dashboard/commented-posts")}
+        >
+          Commented Post
+        </Link>
+        <Link
+          to={"/dashboard/replied-posts"}
+          className={getLinkClass("/dashboard/replied-posts")}
+        >
+          Replied Post
+        </Link>
         <Link
           to={"/dashboard/create-post"}
-          className="createPost tabLink allBtn"
+          className={getLinkClass("/dashboard/create-post", "createPost")}
         >
           <img src={addPost} alt="add post logo" /> Create Post
         </Link>
       </div>
       <div className="details">
         <div className="dashboardIndex">
-          <h2>
-            {/* check karega agar url me create-post hai to Create Post dikhao warna All Post */}
-            {location.pathname.includes("create-post")
-              ? "Create Post"
-              : `All Post (${posts.length})`}
-          </h2>
+          {/* Display dynamic heading with post count */}
+          <h2>{getHeading()}</h2>{" "}
           <div className="postDetailsOutlet">
-            <Outlet context={posts} /> {/* Pass posts data to child routes */}
+            {/* Pass posts data to child routes */}
+            <Outlet context={posts} />
           </div>
         </div>
       </div>
