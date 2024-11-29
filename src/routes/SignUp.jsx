@@ -89,7 +89,7 @@ export async function action({ request }) {
 
     // Send email verification with a custom URL
     await sendEmailVerification(user, {
-      url: "http://localhost:5173/sign-in", // Customize this URL for your verification page
+      url: "https://anonymous-post-publish.vercel.app//sign-in", // Customize this URL for your verification page
       handleCodeInApp: true, // Ensures the app handles the verification
     });
 
